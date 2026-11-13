@@ -31,11 +31,22 @@ Chaque composant respecte les contrastes WCAG AA, reste utilisable au clavier et
 
 ## Visuels
 
-photo de pexels
+La démo utilise des photos dans `demo/img/` (cartes d'annonce, fiche bien, bandeau d'accueil). Toutes proviennent de [Pexels](https://www.pexels.com/) sous la licence Pexels (usage libre).
 
-| Fichier | Source | Licence |
-|---|---|---|
-| `demo/img/hero-alex-staudinger.jpg` / `.webp` | Photo de Alex Staudinger, [Pexels](https://www.pexels.com/) | Licence Pexels (usage libre) |
+| Fichier (`demo/img/`) | Photographe |
+|---|---|
+| `hero-alex-staudinger.jpg / .webp` | Alex Staudinger |
+| `card-appartement-lumineux.webp` | Jakub Zerdzicki |
+| `card-maison-de-ville.webp` | Daniel Ledesma |
+| `card-studio.webp` | David Riand |
+| `card-maison-terrain.webp` | Eric Poussin |
+| `card-loft.webp` | Egor Komarov |
+| `card-villa.webp` | Yasir Gurbuz |
+| `gallery-principale.webp` | Paparazzi Ratzfatzzi |
+| `gallery-thumb-1.webp` | Arnaud Vigne |
+| `gallery-thumb-2.webp` | Arnaud Vigne |
+| `gallery-thumb-3.webp` | Volker Thimm |
+| `gallery-thumb-4.webp` | Volker Thimm |
 
 ## Licence
 

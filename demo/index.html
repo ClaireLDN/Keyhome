@@ -37,9 +37,18 @@
     border: 1px solid var(--color-primary); background: var(--color-surface); color: var(--color-primary); font-size: 22px; cursor: pointer; box-shadow: var(--shadow-md); }
   .kh-arrow:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
   .kh-arrow--prev { left: -22px; } .kh-arrow--next { right: -22px; }
-  .kh-media-1 { background: var(--color-coral); } .kh-media-2 { background: var(--color-mint); }
-  .kh-media-3 { background: var(--color-accent); } .kh-media-4 { background: var(--color-primary); }
-  .kh-media-5 { background: var(--color-accent-soft); } .kh-media-6 { background: var(--color-mint); }
+  .kh-card__media { background-size: cover; background-position: center; background-repeat: no-repeat; }
+  .kh-media-1 { background-image: url("img/card-appartement-lumineux.webp"); }
+  .kh-media-2 { background-image: url("img/card-maison-de-ville.webp"); }
+  .kh-media-3 { background-image: url("img/card-studio.webp"); }
+  .kh-media-4 { background-image: url("img/card-maison-terrain.webp"); }
+  .kh-media-5 { background-image: url("img/card-loft.webp"); }
+  .kh-media-6 { background-image: url("img/card-villa.webp"); }
+  .kh-gallery--photo { background: url("img/gallery-principale.webp") center / cover no-repeat; }
+  .kh-thumb--1 { background: url("img/gallery-thumb-1.webp") center / cover no-repeat; }
+  .kh-thumb--2 { background: url("img/gallery-thumb-2.webp") center / cover no-repeat; }
+  .kh-thumb--3 { background: url("img/gallery-thumb-3.webp") center / cover no-repeat; }
+  .kh-thumb--4 { background: url("img/gallery-thumb-4.webp") center / cover no-repeat; }
   .kh-footer { border-top: 1px solid var(--color-border); background: var(--color-surface); padding: var(--space-8) 0; margin-top: var(--space-12); font-size: var(--font-size-sm); color: var(--color-text-muted); }
   @media (max-width: 900px) { .kh-track > * { flex-basis: calc((100% - 2 * var(--space-6)) / 3); } .kh-arrow { display: none; } }
   @media (max-width: 600px) { .kh-track > * { flex-basis: calc((100% - var(--space-6)) / 2); } .kh-hero h1 { font-size: 30px; } }
@@ -135,8 +144,8 @@
       <h2>Fiche bien</h2>
       <div class="kh-detail">
         <div>
-          <div class="kh-gallery kh-media-4" role="img" aria-label="Visuel principal (aplat)"></div>
-          <div class="kh-gallery-thumbs" aria-hidden="true"><div class="kh-thumb"></div><div class="kh-thumb" style="background:var(--color-mint)"></div><div class="kh-thumb" style="background:var(--color-accent)"></div><div class="kh-thumb" style="background:var(--color-primary)"></div></div>
+          <div class="kh-gallery kh-gallery--photo" role="img" aria-label="Visuel principal : maison de ville"></div>
+          <div class="kh-gallery-thumbs" aria-hidden="true"><div class="kh-thumb kh-thumb--1"></div><div class="kh-thumb kh-thumb--2"></div><div class="kh-thumb kh-thumb--3"></div><div class="kh-thumb kh-thumb--4"></div></div>
           <div class="kh-facts">
             <div class="kh-fact"><div class="kh-fact__value">68 m²</div><div class="kh-fact__label">Surface habitable</div></div>
             <div class="kh-fact"><div class="kh-fact__value">3</div><div class="kh-fact__label">Pièces</div></div>
