@@ -1,0 +1,9 @@
+.kh-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm); overflow: hidden; color: inherit; text-decoration: none;
+  display: flex; flex-direction: column; transition: box-shadow .2s, transform .2s; }
+.kh-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.kh-card:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+.kh-card__media { position: relative; height: 180px; }
+.kh-card__body { padding: var(--space-4) var(--space-4) var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); }
+.kh-card__title { font-size: 16px; font-weight: 600; margin: 0; }
+.kh-card__meta { font-size: 14px; color: var(--color-text-muted); display: flex; gap: var(--space-3); flex-wrap: wrap; }

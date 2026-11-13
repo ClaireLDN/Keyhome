@@ -1,0 +1,8 @@
+.kh-header { background: var(--color-surface); border-bottom: 1px solid var(--color-border); position: sticky; top: 0; z-index: 10; }
+.kh-header__inner { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-6); }
+.kh-logo { font-weight: 700; font-size: 20px; color: var(--color-primary); text-decoration: none; }
+.kh-nav { display: flex; gap: var(--space-6); font-size: var(--font-size-md); }
+.kh-nav a { color: var(--color-text-muted); text-decoration: none; }
+.kh-nav a[aria-current="page"] { color: var(--color-primary); font-weight: 600; }
+.kh-nav a:focus-visible, .kh-logo:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+@media (max-width: 900px) { .kh-nav { display: none; } }

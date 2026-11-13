@@ -1,0 +1,50 @@
+:root {
+  --color-primary: #2446E0;
+  --color-primary-hover: #1A36B8;
+  --color-accent: #FFC93C;
+  --color-accent-soft: #FFF1C2;
+  --color-coral: #FF6B6B;
+  --color-mint: #7CE0C3;
+  --color-bg: #F7F8F6;
+  --color-surface: #FFFFFF;
+  --color-text: #1A2332;
+  --color-text-muted: #5B6674;
+  --color-border: #E2E6EA;
+  --color-success: #2F7D4F;
+  --color-success-soft: #E7F4EC;
+  --color-error: #B42318;
+
+  --font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-size-sm: 13px;
+  --font-size-md: 15px;
+  --font-size-base: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 26px;
+  --font-size-display: 40px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-6: 24px; --space-8: 32px; --space-12: 48px;
+
+  --radius-pill: 999px;
+  --radius-field: 6px;
+  --radius-card: 12px;
+  --radius-search: 20px;
+
+  --shadow-sm: 0 1px 2px rgba(26,35,50,.06);
+  --shadow-md: 0 8px 24px rgba(26,35,50,.10);
+  --focus-ring: 3px solid var(--color-accent);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.5;
+}

@@ -1,0 +1,6 @@
+.kh-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600;
+  padding: 4px 10px; border-radius: var(--radius-pill); background: var(--color-surface); color: var(--color-primary); }
+.kh-badge--new { background: var(--color-accent); color: var(--color-text); }
+.kh-badge--pending { background: var(--color-accent-soft); color: var(--color-text); }
+.kh-badge--rented { background: var(--color-text); color: #fff; }
+.kh-badge--available { background: var(--color-success-soft); color: var(--color-success); }

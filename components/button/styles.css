@@ -1,0 +1,14 @@
+.kh-btn {
+  font-family: var(--font-family); font-weight: 600; font-size: var(--font-size-md);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  height: 44px; padding: 0 var(--space-6); border-radius: var(--radius-pill);
+  border: 1px solid transparent; cursor: pointer; text-decoration: none;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.kh-btn--primary { background: var(--color-primary); color: #fff; }
+.kh-btn--primary:hover { background: var(--color-primary-hover); }
+.kh-btn--secondary { background: var(--color-surface); color: var(--color-primary); border-color: var(--color-primary); }
+.kh-btn--secondary:hover { background: var(--color-accent-soft); }
+.kh-btn:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+.kh-btn:disabled, .kh-btn[aria-disabled="true"] { background: #E2E6EA; color: #5B6674; border-color: #E2E6EA; cursor: not-allowed; }
+.kh-btn--block { width: 100%; }

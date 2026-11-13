@@ -1,0 +1,6 @@
+.kh-stats { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: var(--space-4); }
+.kh-stats__intro { grid-row: span 2; background: var(--color-primary); color: #fff; border-radius: var(--radius-card); padding: var(--space-8); }
+.kh-stat { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); }
+.kh-stat__num { font-size: 36px; font-weight: 700; color: var(--color-primary); }
+.kh-stat__label { font-size: 14px; color: var(--color-text-muted); }
+@media (max-width: 900px) { .kh-stats { grid-template-columns: 1fr 1fr; } .kh-stats__intro { grid-column: 1 / -1; grid-row: auto; } }

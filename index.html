@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keyhome — Démo du design system</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../components/navigation/styles.css">
+<link rel="stylesheet" href="../components/button/styles.css">
+<link rel="stylesheet" href="../components/input/styles.css">
+<link rel="stylesheet" href="../components/search-bar/styles.css">
+<link rel="stylesheet" href="../components/listing-card/styles.css">
+<link rel="stylesheet" href="../components/status-badge/styles.css">
+<link rel="stylesheet" href="../components/price-tag/styles.css">
+<link rel="stylesheet" href="../components/property-detail/styles.css">
+<link rel="stylesheet" href="../components/stats-block/styles.css">
+<link rel="stylesheet" href="../components/contact-form/styles.css">
+<link rel="stylesheet" href="../components/empty-state/styles.css">
+<style>
+  .kh-hero { background: var(--color-bg); padding-bottom: var(--space-8); }
+  .kh-hero__band { background: var(--color-primary); height: 260px; }
+  .kh-hero__content { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-6); }
+  .kh-hero h1 { font-size: var(--font-size-display); line-height: 1.15; color: #fff; margin: 0; padding-top: var(--space-12); }
+  .kh-hero p { color: #DCE3FF; font-size: 18px; margin: var(--space-3) 0 0; }
+  .kh-hero__search { margin-top: -70px; }
+  .kh-wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-6); }
+  .kh-section { padding: var(--space-12) 0; }
+  .kh-section h2 { color: var(--color-primary); font-size: var(--font-size-xl); margin: 0 0 var(--space-6); }
+  .kh-slider { position: relative; }
+  .kh-track { display: flex; gap: var(--space-6); overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 4px 8px; scrollbar-width: none; }
+  .kh-track::-webkit-scrollbar { display: none; }
+  .kh-track > * { flex: 0 0 calc((100% - 5 * var(--space-6)) / 6); scroll-snap-align: start; min-width: 180px; }
+  .kh-arrow { position: absolute; top: 90px; z-index: 3; width: 44px; height: 44px; border-radius: var(--radius-pill);
+    border: 1px solid var(--color-primary); background: var(--color-surface); color: var(--color-primary); font-size: 22px; cursor: pointer; box-shadow: var(--shadow-md); }
+  .kh-arrow:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+  .kh-arrow--prev { left: -22px; } .kh-arrow--next { right: -22px; }
+  .kh-media-1 { background: var(--color-coral); } .kh-media-2 { background: var(--color-mint); }
+  .kh-media-3 { background: var(--color-accent); } .kh-media-4 { background: var(--color-primary); }
+  .kh-media-5 { background: var(--color-accent-soft); } .kh-media-6 { background: var(--color-mint); }
+  .kh-footer { border-top: 1px solid var(--color-border); background: var(--color-surface); padding: var(--space-8) 0; margin-top: var(--space-12); font-size: var(--font-size-sm); color: var(--color-text-muted); }
+  @media (max-width: 900px) { .kh-track > * { flex-basis: calc((100% - 2 * var(--space-6)) / 3); } .kh-arrow { display: none; } }
+  @media (max-width: 600px) { .kh-track > * { flex-basis: calc((100% - var(--space-6)) / 2); } .kh-hero h1 { font-size: 30px; } }
+</style>
+</head>
+<body>
+
+<header class="kh-header">
+  <div class="kh-header__inner">
+    <a class="kh-logo" href="#accueil">Keyhome</a>
+    <nav class="kh-nav" aria-label="Navigation principale">
+      <a href="#acheter" aria-current="page">Acheter</a>
+      <a href="#louer">Louer</a>
+      <a href="#vendre">Vendre</a>
+      <a href="#estimer">Estimer</a>
+    </nav>
+    <a class="kh-btn kh-btn--secondary" href="#connexion">Se connecter</a>
+  </div>
+</header>
+
+<main>
+  <section class="kh-hero" id="accueil">
+    <div class="kh-hero__band"><div class="kh-hero__content">
+      <h1>Trouvez le logement qui vous ressemble</h1>
+      <p>Des annonces vérifiées, une carte claire et un contact direct avec les conseillers.</p>
+    </div></div>
+    <div class="kh-wrap kh-hero__search">
+      <form class="kh-search" onsubmit="event.preventDefault()" aria-label="Recherche de biens">
+        <div class="kh-chips" role="group" aria-label="Filtres rapides">
+          <button class="kh-chip" type="button" aria-pressed="true">Acheter</button>
+          <button class="kh-chip" type="button" aria-pressed="false">Louer</button>
+          <button class="kh-chip" type="button" aria-pressed="false">Nouveautés</button>
+        </div>
+        <div class="kh-field-group">
+          <label class="kh-field-label" for="city">Ville ou code postal</label>
+          <input class="kh-field" id="city" type="text" placeholder="Ex. Bordeaux, 33000">
+        </div>
+        <div class="kh-field-group">
+          <label class="kh-field-label" for="budget">Budget max</label>
+          <select class="kh-field" id="budget"><option>Sans limite</option><option>300 000 €</option><option>500 000 €</option><option>800 000 €</option></select>
+        </div>
+        <div class="kh-field-group">
+          <label class="kh-field-label" for="surface">Surface min.</label>
+          <select class="kh-field" id="surface"><option>Indifférent</option><option>30 m²</option><option>60 m²</option><option>90 m²</option></select>
+        </div>
+        <div class="kh-field-group">
+          <label class="kh-field-label" for="rooms">Pièces</label>
+          <select class="kh-field" id="rooms"><option>Toutes</option><option>2 et plus</option><option>3 et plus</option><option>4 et plus</option></select>
+        </div>
+        <button class="kh-btn kh-btn--primary" type="submit">Rechercher</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="kh-section" id="resultats">
+    <div class="kh-wrap">
+      <h2>Biens à proximité</h2>
+      <div class="kh-slider">
+        <button class="kh-arrow kh-arrow--prev" id="prev" type="button" aria-label="Biens précédents">‹</button>
+        <button class="kh-arrow kh-arrow--next" id="next" type="button" aria-label="Biens suivants">›</button>
+        <div class="kh-track" id="track">
+          <a class="kh-card" href="#fiche">
+            <div class="kh-card__media kh-media-1" role="img" aria-label="Visuel : appartement lumineux"><span class="kh-badge kh-badge--new" style="position:absolute;top:12px;left:12px">Nouveau</span></div>
+            <div class="kh-card__body"><span class="kh-price">385 000 €</span><p class="kh-card__title">Appartement lumineux avec balcon</p><div class="kh-card__meta"><span>68 m²</span><span>3 pièces</span><span>Bordeaux Chartrons</span></div></div>
+          </a>
+          <a class="kh-card" href="#fiche">
+            <div class="kh-card__media kh-media-2" role="img" aria-label="Visuel : maison de ville"><span class="kh-badge kh-badge--pending" style="position:absolute;top:12px;left:12px">Sous compromis</span></div>
+            <div class="kh-card__body"><span class="kh-price">512 000 €</span><p class="kh-card__title">Maison de ville avec jardin</p><div class="kh-card__meta"><span>110 m²</span><span>5 pièces</span><span>Mérignac</span></div></div>
+          </a>
+          <a class="kh-card" href="#fiche">
+            <div class="kh-card__media kh-media-3" role="img" aria-label="Visuel : studio"><span class="kh-badge kh-badge--rented" style="position:absolute;top:12px;left:12px">Loué</span></div>
+            <div class="kh-card__body"><span class="kh-price">1 150 € <span class="kh-price__unit">/ mois</span></span><p class="kh-card__title">Studio meublé proche tramway</p><div class="kh-card__meta"><span>28 m²</span><span>1 pièce</span><span>Talence</span></div></div>
+          </a>
+          <a class="kh-card" href="#fiche">
+            <div class="kh-card__media kh-media-4" role="img" aria-label="Visuel : maison avec terrain"></div>
+            <div class="kh-card__body"><span class="kh-price">445 000 €</span><p class="kh-card__title">Maison avec terrain arboré</p><div class="kh-card__meta"><span>95 m²</span><span>4 pièces</span><span>Pessac</span></div></div>
+          </a>
+          <a class="kh-card" href="#fiche">
+            <div class="kh-card__media kh-media-5" role="img" aria-label="Visuel : loft"></div>
+            <div class="kh-card__body"><span class="kh-price">298 000 €</span><p class="kh-card__title">Loft lumineux en centre-ville</p><div class="kh-card__meta"><span>52 m²</span><span>2 pièces</span><span>Bordeaux Saint-Michel</span></div></div>
+          </a>
+          <a class="kh-card" href="#fiche">
+            <div class="kh-card__media kh-media-6" role="img" aria-label="Visuel : villa"></div>
+            <div class="kh-card__body"><span class="kh-price">720 000 €</span><p class="kh-card__title">Villa avec piscine</p><div class="kh-card__meta"><span>140 m²</span><span>5 pièces</span><span>Arcachon</span></div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kh-section" id="fiche" style="padding-top:0">
+    <div class="kh-wrap">
+      <h2>Fiche bien</h2>
+      <div class="kh-detail">
+        <div>
+          <div class="kh-gallery kh-media-4" role="img" aria-label="Visuel principal (aplat)"></div>
+          <div class="kh-gallery-thumbs" aria-hidden="true"><div class="kh-thumb"></div><div class="kh-thumb" style="background:var(--color-mint)"></div><div class="kh-thumb" style="background:var(--color-accent)"></div><div class="kh-thumb" style="background:var(--color-primary)"></div></div>
+          <div class="kh-facts">
+            <div class="kh-fact"><div class="kh-fact__value">68 m²</div><div class="kh-fact__label">Surface habitable</div></div>
+            <div class="kh-fact"><div class="kh-fact__value">3</div><div class="kh-fact__label">Pièces</div></div>
+            <div class="kh-fact"><div class="kh-fact__value">2e étage</div><div class="kh-fact__label">Avec ascenseur</div></div>
+          </div>
+          <p style="color:var(--color-text-muted)">Texte de démonstration. Appartement traversant, orienté sud, avec balcon et cave.</p>
+        </div>
+        <aside class="kh-contact" aria-label="Contacter le conseiller">
+          <span class="kh-price kh-price--lg">385 000 €</span>
+          <span class="kh-badge kh-badge--available" style="align-self:flex-start">● Disponible</span>
+          <button class="kh-btn kh-btn--primary kh-btn--block" type="button">Demander une visite</button>
+          <button class="kh-btn kh-btn--secondary kh-btn--block" type="button">Envoyer un message</button>
+          <p class="kh-contact__note">Conseiller joignable du lundi au samedi. Données de démonstration.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="kh-section" style="padding-top:0">
+    <div class="kh-wrap">
+      <h2>État vide</h2>
+      <div class="kh-empty">Aucune annonce ne correspond à ces critères. Élargissez la zone ou le budget pour voir plus de biens.</div>
+    </div>
+  </section>
+
+  <section class="kh-section" style="padding-top:0">
+    <div class="kh-wrap kh-stats">
+      <div class="kh-stats__intro"><h2 style="color:#fff;margin:0">Des conseillers présents sur le terrain</h2><p style="color:#DCE3FF">Données de démonstration.</p></div>
+      <div class="kh-stat"><span class="kh-stat__num">1 200+</span><span class="kh-stat__label">Biens publiés</span></div>
+      <div class="kh-stat"><span class="kh-stat__num">850+</span><span class="kh-stat__label">Clients accompagnés</span></div>
+      <div class="kh-stat"><span class="kh-stat__num">40+</span><span class="kh-stat__label">Conseillers</span></div>
+      <div class="kh-stat"><span class="kh-stat__num">4,8/5</span><span class="kh-stat__label">Avis clients</span></div>
+    </div>
+  </section>
+</main>
+
+<footer class="kh-footer"><div class="kh-wrap">Keyhome · Design system · Données fictives · Typographie DM Sans (SIL OFL)</div></footer>
+
+<script>
+(function () {
+  var track = document.getElementById('track');
+  function step() { var c = track.firstElementChild; return c ? c.getBoundingClientRect().width + 24 : 300; }
+  document.getElementById('prev').addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+  document.getElementById('next').addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

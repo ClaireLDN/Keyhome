@@ -1,0 +1,12 @@
+.kh-field-group { display: flex; flex-direction: column; gap: var(--space-1); }
+.kh-field-label { font-size: var(--font-size-sm); font-weight: 600; color: var(--color-text-muted); }
+.kh-field {
+  font-family: var(--font-family); font-size: var(--font-size-md); color: var(--color-text);
+  height: 44px; padding: 0 var(--space-3); width: 100%;
+  background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-field);
+}
+.kh-field:hover { border-color: var(--color-text-muted); }
+.kh-field:focus-visible { outline: var(--focus-ring); outline-offset: 0; border-color: var(--color-primary); }
+.kh-field:disabled { background: var(--color-bg); color: var(--color-text-muted); cursor: not-allowed; }
+.kh-field[aria-invalid="true"] { border-color: var(--color-error); }
+.kh-field-error { font-size: var(--font-size-sm); color: var(--color-error); }
