@@ -31,7 +31,11 @@ Chaque composant respecte les contrastes WCAG AA, reste utilisable au clavier et
 
 ## Visuels
 
-Les visuels de la démo sont des aplats de couleur, sans photo. Aucune photo n'est fournie dans ce repo.
+photo de pexels
+
+| Fichier | Source | Licence |
+|---|---|---|
+| `demo/img/hero-alex-staudinger.jpg` / `.webp` | Photo de Alex Staudinger, [Pexels](https://www.pexels.com/) | Licence Pexels (usage libre) |
 
 ## Licence
 
