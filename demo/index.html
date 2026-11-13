@@ -20,8 +20,9 @@
 <link rel="stylesheet" href="../components/empty-state/styles.css">
 <style>
   .kh-hero { background: var(--color-bg); padding-bottom: var(--space-8); }
-  .kh-hero__band { background: var(--color-primary); height: 260px; }
-  .kh-hero__content { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-6); }
+  .kh-hero__band { position: relative; height: 260px; background: url("img/hero-alex-staudinger.jpg") center 60% / cover no-repeat var(--color-primary); }
+  .kh-hero__band::before { content: ""; position: absolute; inset: 0; background: rgba(36, 70, 224, .62); }
+  .kh-hero__content { position: relative; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-6); }
   .kh-hero h1 { font-size: var(--font-size-display); line-height: 1.15; color: #fff; margin: 0; padding-top: var(--space-12); }
   .kh-hero p { color: #DCE3FF; font-size: 18px; margin: var(--space-3) 0 0; }
   .kh-hero__search { margin-top: -70px; }
