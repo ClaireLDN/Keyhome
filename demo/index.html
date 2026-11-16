@@ -3,194 +3,277 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Keyhome — Démo du design system</title>
+<title>Keyhome — Design system (couleurs, typographie, composants)</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../tokens/tokens.css">
-<link rel="stylesheet" href="../components/navigation/styles.css">
-<link rel="stylesheet" href="../components/button/styles.css">
-<link rel="stylesheet" href="../components/input/styles.css">
-<link rel="stylesheet" href="../components/search-bar/styles.css">
-<link rel="stylesheet" href="../components/listing-card/styles.css">
-<link rel="stylesheet" href="../components/status-badge/styles.css">
-<link rel="stylesheet" href="../components/price-tag/styles.css">
-<link rel="stylesheet" href="../components/property-detail/styles.css">
-<link rel="stylesheet" href="../components/stats-block/styles.css">
-<link rel="stylesheet" href="../components/contact-form/styles.css">
-<link rel="stylesheet" href="../components/empty-state/styles.css">
 <style>
-  .kh-hero { background: var(--color-bg); padding-bottom: var(--space-8); }
-  .kh-hero__band { position: relative; height: 260px; background: url("img/hero-alex-staudinger.jpg") center 60% / cover no-repeat var(--color-primary); }
-  .kh-hero__band::before { content: ""; position: absolute; inset: 0; background: rgba(36, 70, 224, .62); }
-  .kh-hero__content { position: relative; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-6); }
-  .kh-hero h1 { font-size: var(--font-size-display); line-height: 1.15; color: #fff; margin: 0; padding-top: var(--space-12); }
-  .kh-hero p { color: #DCE3FF; font-size: 18px; margin: var(--space-3) 0 0; }
-  .kh-hero__search { margin-top: -70px; }
-  .kh-wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-6); }
-  .kh-section { padding: var(--space-12) 0; }
-  .kh-section h2 { color: var(--color-primary); font-size: var(--font-size-xl); margin: 0 0 var(--space-6); }
-  .kh-slider { position: relative; }
-  .kh-track { display: flex; gap: var(--space-6); overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 4px 8px; scrollbar-width: none; }
-  .kh-track::-webkit-scrollbar { display: none; }
-  .kh-track > * { flex: 0 0 calc((100% - 5 * var(--space-6)) / 6); scroll-snap-align: start; min-width: 180px; }
-  .kh-arrow { position: absolute; top: 90px; z-index: 3; width: 44px; height: 44px; border-radius: var(--radius-pill);
-    border: 1px solid var(--color-primary); background: var(--color-surface); color: var(--color-primary); font-size: 22px; cursor: pointer; box-shadow: var(--shadow-md); }
-  .kh-arrow:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
-  .kh-arrow--prev { left: -22px; } .kh-arrow--next { right: -22px; }
-  .kh-card__media { background-size: cover; background-position: center; background-repeat: no-repeat; }
-  .kh-media-1 { background-image: url("img/card-appartement-lumineux.webp"); }
-  .kh-media-2 { background-image: url("img/card-maison-de-ville.webp"); }
-  .kh-media-3 { background-image: url("img/card-studio.webp"); }
-  .kh-media-4 { background-image: url("img/card-maison-terrain.webp"); }
-  .kh-media-5 { background-image: url("img/card-loft.webp"); }
-  .kh-media-6 { background-image: url("img/card-villa.webp"); }
-  .kh-gallery--photo { background: url("img/gallery-principale.webp") center / cover no-repeat; }
-  .kh-thumb--1 { background: url("img/gallery-thumb-1.webp") center / cover no-repeat; }
-  .kh-thumb--2 { background: url("img/gallery-thumb-2.webp") center / cover no-repeat; }
-  .kh-thumb--3 { background: url("img/gallery-thumb-3.webp") center / cover no-repeat; }
-  .kh-thumb--4 { background: url("img/gallery-thumb-4.webp") center / cover no-repeat; }
-  .kh-footer { border-top: 1px solid var(--color-border); background: var(--color-surface); padding: var(--space-8) 0; margin-top: var(--space-12); font-size: var(--font-size-sm); color: var(--color-text-muted); }
-  @media (max-width: 900px) { .kh-track > * { flex-basis: calc((100% - 2 * var(--space-6)) / 3); } .kh-arrow { display: none; } }
-  @media (max-width: 600px) { .kh-track > * { flex-basis: calc((100% - var(--space-6)) / 2); } .kh-hero h1 { font-size: 30px; } }
+  :root{
+    --color-primary:#2446E0; --color-primary-hover:#1A36B8;
+    --color-accent:#FFC93C; --color-accent-soft:#FFF1C2;
+    --color-coral:#FF6B6B; --color-mint:#7CE0C3;
+    --color-bg:#F7F8F6; --color-surface:#FFFFFF;
+    --color-text:#1A2332; --color-text-muted:#5B6674;
+    --color-border:#E2E6EA; --color-success:#2F7D4F;
+    --color-success-soft:#E7F4EC; --color-error:#B42318;
+    --font-family:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-size-sm:13px; --font-size-md:15px; --font-size-base:16px; --font-size-lg:20px;
+    --font-size-xl:26px; --font-size-display:40px;
+    --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-6:24px; --space-8:32px; --space-12:48px;
+    --radius-pill:999px; --radius-field:6px; --radius-card:12px; --radius-search:20px;
+    --shadow-sm:0 1px 2px rgba(26,35,50,.06); --shadow-md:0 8px 24px rgba(26,35,50,.10);
+    --focus-ring:3px solid var(--color-accent);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--font-family);background:var(--color-bg);color:var(--color-text);line-height:1.5}
+  .wrap{max-width:1040px;margin:0 auto;padding:48px 24px 72px}
+  h1{font-size:40px;line-height:1.15;letter-spacing:-.02em;color:var(--color-primary);margin:0 0 8px;font-weight:700}
+  .lead{color:var(--color-text-muted);font-size:16px;margin:0 0 40px}
+  h2{font-size:20px;font-weight:700;color:var(--color-primary);margin:56px 0 6px}
+  h3{font-size:15px;font-weight:600;margin:0 0 8px;color:var(--color-text)}
+  .hint{font-size:13px;color:var(--color-text-muted);margin:0 0 18px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+  .swatch{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-card);overflow:hidden}
+  .chip{height:96px}
+  .meta{padding:12px 14px}
+  .name{font-size:15px;font-weight:600;margin:0}
+  .hex{font-size:13px;color:var(--color-text-muted);margin:2px 0 0;font-variant-numeric:tabular-nums}
+  .role{font-size:13px;color:var(--color-text-muted);margin:6px 0 0}
+  .contrast{display:inline-block;margin-top:8px;font-size:12px;font-weight:600;padding:3px 8px;border-radius:var(--radius-pill)}
+  .card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-card);padding:20px 24px}
+  .spec{display:grid;grid-template-columns:170px 1fr;gap:12px 24px;align-items:center;padding:14px 0;border-bottom:1px solid var(--color-border)}
+  .spec:last-child{border-bottom:0}
+  .label{font-size:13px;color:var(--color-text-muted);font-variant-numeric:tabular-nums}
+  .row{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center}
+  .block{display:flex;flex-direction:column;gap:var(--space-2)}
+  .state{font-size:12px;color:var(--color-text-muted)}
+
+  /* ===== Composants (copiés depuis components/*/styles.css) ===== */
+  button.kh-btn, a.kh-btn { font-family: "DM Sans", system-ui, sans-serif; font-weight: 600; font-size: 15px; line-height: 1; border-radius: 999px; min-width: 128px; font-variant-ligatures: normal;
+    display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+    height: 44px; padding: 0 var(--space-6); border-radius: var(--radius-pill);
+    border: 1px solid transparent; cursor: pointer; text-decoration: none;
+    transition: background .15s, border-color .15s, color .15s; }
+  .kh-btn--primary { background: var(--color-primary); color: #fff; }
+  .kh-btn--primary:hover { background: var(--color-primary-hover); }
+  .kh-btn--secondary { background: var(--color-surface); color: var(--color-primary); border-color: var(--color-primary); }
+  .kh-btn--secondary:hover { background: var(--color-accent-soft); }
+  .kh-btn:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+  .kh-btn:disabled, .kh-btn[aria-disabled="true"] { background: #E2E6EA; color: #5B6674; border-color: #E2E6EA; cursor: not-allowed; }
+  .kh-btn--block { width: 100%; }
+
+  .kh-field-group { display: flex; flex-direction: column; gap: var(--space-1); }
+  .kh-field-label { font-size: var(--font-size-sm); font-weight: 600; color: var(--color-text-muted); }
+  .kh-field { font-family: var(--font-family); font-size: var(--font-size-md); color: var(--color-text);
+    height: 44px; padding: 0 var(--space-3); width: 100%;
+    background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-field); }
+  .kh-field:hover { border-color: var(--color-text-muted); }
+  .kh-field:focus-visible { outline: var(--focus-ring); outline-offset: 0; border-color: var(--color-primary); }
+  .kh-field:disabled { background: var(--color-bg); color: var(--color-text-muted); cursor: not-allowed; }
+  .kh-field[aria-invalid="true"] { border-color: var(--color-error); }
+  .kh-field-error { font-size: var(--font-size-sm); color: var(--color-error); }
+
+  .kh-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600;
+    padding: 4px 10px; border-radius: var(--radius-pill); background: var(--color-surface); color: var(--color-primary); }
+  .kh-badge--new { background: var(--color-accent); color: var(--color-text); }
+  .kh-badge--pending { background: var(--color-accent-soft); color: var(--color-text); }
+  .kh-badge--rented { background: var(--color-text); color: #fff; }
+  .kh-badge--available { background: var(--color-success-soft); color: var(--color-success); }
+
+  .kh-price { font-size: var(--font-size-lg); font-weight: 700; color: var(--color-primary); }
+  .kh-price--lg { font-size: 28px; }
+  .kh-price__unit { font-size: var(--font-size-md); font-weight: 500; color: var(--color-text-muted); }
+
+  .kh-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card);
+    box-shadow: var(--shadow-sm); overflow: hidden; color: inherit; text-decoration: none;
+    display: flex; flex-direction: column; transition: box-shadow .2s, transform .2s; max-width: 300px; }
+  .kh-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .kh-card:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+  .kh-card__media { position: relative; height: 150px; }
+  .kh-card__body { padding: var(--space-4) var(--space-4) var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); }
+  .kh-card__title { font-size: 16px; font-weight: 600; margin: 0; }
+  .kh-card__meta { font-size: 14px; color: var(--color-text-muted); display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+  .kh-search { position: relative; background: var(--color-surface); border-radius: var(--radius-search);
+    box-shadow: var(--shadow-md); padding: var(--space-4); display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: var(--space-3); align-items: end; }
+  .kh-chips { grid-column: 1 / -1; display: flex; gap: var(--space-2); flex-wrap: wrap; }
+  .kh-chip { font-family: var(--font-family); height: 34px; padding: 0 var(--space-3); border-radius: var(--radius-pill);
+    border: 1px solid var(--color-border); background: var(--color-surface); font-size: 14px; color: var(--color-text); cursor: pointer; }
+  .kh-chip:hover { background: var(--color-accent-soft); }
+  .kh-chip[aria-pressed="true"] { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+  .kh-chip:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+
+  .kh-header { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card); }
+  .kh-header__inner { display: flex; align-items: center; justify-content: space-between; height: 68px; padding: 0 var(--space-6); }
+  .kh-logo { font-weight: 700; font-size: 20px; color: var(--color-primary); text-decoration: none; }
+  .kh-nav { display: flex; gap: var(--space-6); font-size: var(--font-size-md); }
+  .kh-nav a { color: var(--color-text-muted); text-decoration: none; }
+  .kh-nav a[aria-current="page"] { color: var(--color-primary); font-weight: 600; }
+  .kh-nav a:focus-visible, .kh-logo:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+
+  .kh-empty { background: var(--color-surface); border: 1px dashed var(--color-border); border-radius: var(--radius-card);
+    padding: var(--space-8); text-align: center; color: var(--color-text-muted); }
+
+  .kh-skeleton { background: linear-gradient(90deg, #E2E6EA 25%, #F7F8F6 50%, #E2E6EA 75%); background-size: 200% 100%; border-radius: var(--radius-field); height: 16px; width: 220px; }
+  @media (prefers-reduced-motion: no-preference) { .kh-skeleton { animation: kh-shimmer 1.2s linear infinite; } }
+  @keyframes kh-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+  .kh-stats { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: var(--space-4); }
+  .kh-stats__intro { grid-row: span 2; background: var(--color-primary); color: #fff; border-radius: var(--radius-card); padding: var(--space-8); }
+  .kh-stat { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); }
+  .kh-stat__num { font-size: 36px; font-weight: 700; color: var(--color-primary); }
+  .kh-stat__label { font-size: 14px; color: var(--color-text-muted); }
+
+  .kh-contact { background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: 20px; padding: var(--space-6); box-shadow: var(--shadow-md); display: flex; flex-direction: column; gap: var(--space-3); max-width: 340px; }
+  .kh-contact__note { font-size: var(--font-size-sm); color: var(--color-text-muted); margin: 0; }
+
+  .kh-fact { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: var(--space-4); }
+  .kh-fact__value { font-size: 18px; font-weight: 700; color: var(--color-primary); }
+  .kh-fact__label { font-size: var(--font-size-sm); color: var(--color-text-muted); }
+  .kh-thumb { height: 60px; width: 90px; border-radius: var(--radius-field); background: var(--color-coral); }
+
+  .kh-gal { display: flex; gap: var(--space-3); align-items: stretch; }
+  .kh-gallery { height: 200px; width: 240px; border-radius: 20px; background: var(--color-primary); }
+  .kh-gallery-thumbs { display: grid; grid-template-columns: repeat(2, 60px); gap: var(--space-2); align-content: start; }
+  .kh-thumb--mint { background: var(--color-mint); }
+
+  .kh-btn { font-family: "DM Sans", system-ui, sans-serif !important; }
+  button.kh-btn { -webkit-appearance: none; appearance: none; border-radius: 999px !important; border: 1px solid transparent !important; box-shadow: none; }
+  .kh-btn--primary { background: #2446E0 !important; color: #FFFFFF !important; border-color: #2446E0 !important; }
+  .kh-btn--secondary { background: #FFFFFF !important; color: #2446E0 !important; border-color: #2446E0 !important; }
+  .kh-search .kh-btn { border-radius: 999px !important; min-height: 44px; }
+  @media (max-width: 640px) { h1{font-size:30px} .spec{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
+<main class="wrap">
+  <h1>Keyhome</h1>
+  <p class="lead">Design system : tokens, typographie et composants, tels qu'ils sont dans le repo.</p>
 
-<header class="kh-header">
-  <div class="kh-header__inner">
-    <a class="kh-logo" href="#accueil">Keyhome</a>
-    <nav class="kh-nav" aria-label="Navigation principale">
-      <a href="#acheter" aria-current="page">Acheter</a>
-      <a href="#louer">Louer</a>
-      <a href="#vendre">Vendre</a>
-      <a href="#estimer">Estimer</a>
-    </nav>
-    <a class="kh-btn kh-btn--secondary" href="#connexion">Se connecter</a>
+  <h2>Couleurs</h2>
+  <p class="hint">Valeurs issues de tokens/tokens.css.</p>
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background:#2446E0"></div><div class="meta"><p class="name">Primaire</p><p class="hex">#2446E0</p><p class="role">Boutons, titres, liens</p><span class="contrast" style="background:#2446E0;color:#fff">Blanc 6,9 : 1</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#1A36B8"></div><div class="meta"><p class="name">Primaire survol</p><p class="hex">#1A36B8</p><p class="role">Survol du bouton primaire</p></div></div>
+    <div class="swatch"><div class="chip" style="background:#FFC93C"></div><div class="meta"><p class="name">Accent</p><p class="hex">#FFC93C</p><p class="role">Focus, mise en avant</p></div></div>
+    <div class="swatch"><div class="chip" style="background:#FFF1C2"></div><div class="meta"><p class="name">Accent doux</p><p class="hex">#FFF1C2</p><p class="role">Survol des chips, fonds de badge</p></div></div>
+    <div class="swatch"><div class="chip" style="background:#FF6B6B"></div><div class="meta"><p class="name">Corail</p><p class="hex">#FF6B6B</p><p class="role">Aplat visuel, sans dégradé</p></div></div>
+    <div class="swatch"><div class="chip" style="background:#7CE0C3"></div><div class="meta"><p class="name">Menthe</p><p class="hex">#7CE0C3</p><p class="role">Aplat visuel, sans dégradé</p></div></div>
+    <div class="swatch"><div class="chip" style="background:#F7F8F6;border-bottom:1px solid #E2E6EA"></div><div class="meta"><p class="name">Fond</p><p class="hex">#F7F8F6</p><p class="role">Fond de page</p></div></div>
+    <div class="swatch"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid #E2E6EA"></div><div class="meta"><p class="name">Surface</p><p class="hex">#FFFFFF</p><p class="role">Cartes, champs</p></div></div>
+    <div class="swatch"><div class="chip" style="background:#1A2332"></div><div class="meta"><p class="name">Texte</p><p class="hex">#1A2332</p><p class="role">Texte principal</p></div></div>
+    <div class="swatch"><div class="chip" style="background:#5B6674"></div><div class="meta"><p class="name">Texte secondaire</p><p class="hex">#5B6674</p><p class="role">Libellés, métadonnées</p></div></div>
+    <div class="swatch"><div class="chip" style="background:#E2E6EA"></div><div class="meta"><p class="name">Bordure</p><p class="hex">#E2E6EA</p><p class="role">Séparateurs, cartes</p></div></div>
+    <div class="swatch"><div class="chip" style="background:#2F7D4F"></div><div class="meta"><p class="name">Succès</p><p class="hex">#2F7D4F</p><p class="role">Statut « Disponible »</p></div></div>
+    <div class="swatch"><div class="chip" style="background:#E7F4EC"></div><div class="meta"><p class="name">Succès doux</p><p class="hex">#E7F4EC</p><p class="role">Fond du badge succès</p></div></div>
+    <div class="swatch"><div class="chip" style="background:#B42318"></div><div class="meta"><p class="name">Erreur</p><p class="hex">#B42318</p><p class="role">Messages d'erreur</p></div></div>
   </div>
-</header>
 
-<main>
-  <section class="kh-hero" id="accueil">
-    <div class="kh-hero__band"><div class="kh-hero__content">
-      <h1>Trouvez le logement qui vous ressemble</h1>
-      <p>Des annonces vérifiées, une carte claire et un contact direct avec les conseillers.</p>
+  <h2>Typographie</h2>
+  <p class="hint">DM Sans partout, chargée depuis Google Fonts.</p>
+  <div class="card">
+    <div class="spec"><div class="label">Display · 40 px · 700</div><div style="font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1.15;color:#2446E0">Trouvez votre bien</div></div>
+    <div class="spec"><div class="label">Titre · 26 px · 700</div><div style="font-size:26px;font-weight:700;color:#2446E0">Biens récemment ajoutés</div></div>
+    <div class="spec"><div class="label">Titre de bloc · 20 px · 700</div><div style="font-size:20px;font-weight:700;color:#2446E0">Caractéristiques</div></div>
+    <div class="spec"><div class="label">Corps · 16 px · 400</div><div style="font-size:16px">Appartement lumineux au calme, à quelques minutes du centre.</div></div>
+    <div class="spec"><div class="label">Corps · 15 px · 500</div><div style="font-size:15px;font-weight:500">Contacter le conseiller</div></div>
+    <div class="spec"><div class="label">Texte secondaire · 13 px · 400</div><div style="font-size:13px;color:#5B6674">Données fictives · mis à jour aujourd'hui</div></div>
+  </div>
+
+  <h2>Boutons</h2>
+  <p class="hint">Variantes primaire et secondaire, pilule 44 px. États : défaut, survol, focus, désactivé.</p>
+  <div class="card">
+    <div class="spec"><div class="label">Primaire</div><div class="row"><button style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;height:44px;padding:0 24px;border-radius:999px;border:0;background:#2446E0;color:#FFFFFF;cursor:pointer;display:inline-flex;align-items:center;justify-content:center">Voir la fiche</button><button disabled style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;height:44px;padding:0 24px;border-radius:999px;border:0;background:#E2E6EA;color:#5B6674;cursor:not-allowed;display:inline-flex;align-items:center;justify-content:center">Désactivé</button></div></div>
+    <div class="spec"><div class="label">Secondaire</div><div class="row"><button style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;height:44px;padding:0 24px;border-radius:999px;border:1px solid #2446E0;background:#FFFFFF;color:#2446E0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center">Demander une visite</button><button disabled style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;height:44px;padding:0 24px;border-radius:999px;border:1px solid #E2E6EA;background:#E2E6EA;color:#5B6674;cursor:not-allowed;display:inline-flex;align-items:center;justify-content:center">Désactivé</button></div></div>
+    <div class="spec"><div class="label">Pleine largeur</div><div style="max-width:320px"><button style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;height:44px;padding:0 24px;border-radius:999px;border:0;background:#2446E0;color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;width:100%">Envoyer un message</button></div></div>
+  </div>
+
+  <h2>Champs de saisie</h2>
+  <p class="hint">Libellé visible. Erreur : aria-invalid et message relié.</p>
+  <div class="card">
+    <div class="spec"><div class="label">Défaut</div><div class="kh-field-group" style="max-width:340px"><label class="kh-field-label" for="f1">Ville ou quartier</label><input class="kh-field" id="f1" placeholder="Bordeaux, Chartrons…"></div></div>
+    <div class="spec"><div class="label">Erreur</div><div class="kh-field-group" style="max-width:340px"><label class="kh-field-label" for="f2">Email</label><input class="kh-field" id="f2" aria-invalid="true" aria-describedby="e2" value="jean@exemple"><span class="kh-field-error" id="e2">Entrez une adresse email valide.</span></div></div>
+    <div class="spec"><div class="label">Désactivé</div><div class="kh-field-group" style="max-width:340px"><label class="kh-field-label" for="f3">Budget</label><input class="kh-field" id="f3" disabled value="Non disponible"></div></div>
+  </div>
+
+  <h2>Badges de statut</h2>
+  <div class="card">
+    <div class="spec"><div class="label">Quatre statuts</div><div class="row"><span class="kh-badge kh-badge--new">Nouveau</span><span class="kh-badge kh-badge--pending">Sous compromis</span><span class="kh-badge kh-badge--rented">Loué</span><span class="kh-badge kh-badge--available">Disponible</span></div></div>
+    <div class="spec"><div class="label">Pastilles de prix</div><div class="row"><span class="kh-price">385 000 €</span><span class="kh-price">1 250 €<span class="kh-price__unit"> / mois</span></span><span class="kh-price kh-price--lg">612 000 €</span></div></div>
+  </div>
+
+  <h2>Carte d'annonce</h2>
+  <p class="hint">Carte entière cliquable (lien), focus visible, survol avec élévation.</p>
+  <div class="card">
+    <a class="kh-card" href="#" aria-label="Maison de ville, 612 000 euros">
+      <div class="kh-card__media" style="background:#FF6B6B"></div>
+      <div class="kh-card__body">
+        <span class="kh-badge kh-badge--pending" style="align-self:flex-start">Sous compromis</span>
+        <p class="kh-price">612 000 €</p>
+        <p class="kh-card__title">Maison de ville avec jardin</p>
+        <div class="kh-card__meta"><span>120 m²</span><span>5 pièces</span><span>Chartrons</span></div>
+      </div>
+    </a>
+  </div>
+
+  <h2>Barre de recherche</h2>
+  <p class="hint">Carte flottante, rayon 20 px, chips avec aria-pressed.</p>
+  <div class="kh-search" style="max-width:920px">
+    <div class="kh-chips">
+      <button class="kh-chip" aria-pressed="true">Acheter</button>
+      <button class="kh-chip" aria-pressed="false">Louer</button>
+      <button class="kh-chip" aria-pressed="false">Nouveautés</button>
+    </div>
+    <div class="kh-field-group"><label class="kh-field-label">Ville</label><input class="kh-field" placeholder="Bordeaux"></div>
+    <div class="kh-field-group"><label class="kh-field-label">Budget</label><input class="kh-field" placeholder="500 000 €"></div>
+    <div class="kh-field-group"><label class="kh-field-label">Surface</label><input class="kh-field" placeholder="80 m²"></div>
+    <div class="kh-field-group"><label class="kh-field-label">Pièces</label><input class="kh-field" placeholder="3"></div>
+    <button style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;height:44px;padding:0 24px;border-radius:999px;border:0;background:#2446E0;color:#FFFFFF;cursor:pointer;display:inline-flex;align-items:center;justify-content:center">Rechercher</button>
+  </div>
+
+  <h2>Navigation</h2>
+  <div class="kh-header" style="max-width:920px">
+    <div class="kh-header__inner">
+      <a class="kh-logo" href="#">Keyhome</a>
+      <nav class="kh-nav"><a href="#" aria-current="page">Acheter</a><a href="#">Louer</a><a href="#">Vendre</a><a href="#">Estimer</a></nav>
+      <button style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;height:40px;padding:0 20px;border-radius:999px;border:1px solid #2446E0;background:#FFFFFF;color:#2446E0;cursor:pointer">Connexion</button>
+    </div>
+  </div>
+
+  <h2>Fiche bien : miniatures et caractéristiques</h2>
+  <div class="card">
+    <div class="spec"><div class="label">Galerie</div><div class="kh-gal"><div class="kh-gallery"></div><div class="kh-gallery-thumbs"><div class="kh-thumb"></div><div class="kh-thumb kh-thumb--mint"></div><div class="kh-thumb"></div><div class="kh-thumb kh-thumb--mint"></div></div></div></div>
+    <div class="spec"><div class="label">Caractéristiques</div><div class="row"><div class="kh-fact" style="min-width:140px"><div class="kh-fact__value">120 m²</div><div class="kh-fact__label">Surface</div></div><div class="kh-fact" style="min-width:140px"><div class="kh-fact__value">5</div><div class="kh-fact__label">Pièces</div></div><div class="kh-fact" style="min-width:140px"><div class="kh-fact__value">1995</div><div class="kh-fact__label">Année</div></div></div></div>
+    <div class="spec"><div class="label">Bloc de contact</div><div class="kh-contact">
+      <p class="kh-contact__note">Votre conseiller vous répond sous 24 h.</p>
+      <button style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;height:44px;padding:0 24px;border-radius:999px;border:0;background:#2446E0;color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;width:100%">Demander une visite</button>
+      <button style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;height:44px;padding:0 24px;border-radius:999px;border:1px solid #2446E0;background:#FFFFFF;color:#2446E0;cursor:pointer;display:flex;align-items:center;justify-content:center;width:100%">Envoyer un message</button>
     </div></div>
-    <div class="kh-wrap kh-hero__search">
-      <form class="kh-search" onsubmit="event.preventDefault()" aria-label="Recherche de biens">
-        <div class="kh-chips" role="group" aria-label="Filtres rapides">
-          <button class="kh-chip" type="button" aria-pressed="true">Acheter</button>
-          <button class="kh-chip" type="button" aria-pressed="false">Louer</button>
-          <button class="kh-chip" type="button" aria-pressed="false">Nouveautés</button>
-        </div>
-        <div class="kh-field-group">
-          <label class="kh-field-label" for="city">Ville ou code postal</label>
-          <input class="kh-field" id="city" type="text" placeholder="Ex. Bordeaux, 33000">
-        </div>
-        <div class="kh-field-group">
-          <label class="kh-field-label" for="budget">Budget max</label>
-          <select class="kh-field" id="budget"><option>Sans limite</option><option>300 000 €</option><option>500 000 €</option><option>800 000 €</option></select>
-        </div>
-        <div class="kh-field-group">
-          <label class="kh-field-label" for="surface">Surface min.</label>
-          <select class="kh-field" id="surface"><option>Indifférent</option><option>30 m²</option><option>60 m²</option><option>90 m²</option></select>
-        </div>
-        <div class="kh-field-group">
-          <label class="kh-field-label" for="rooms">Pièces</label>
-          <select class="kh-field" id="rooms"><option>Toutes</option><option>2 et plus</option><option>3 et plus</option><option>4 et plus</option></select>
-        </div>
-        <button class="kh-btn kh-btn--primary" type="submit">Rechercher</button>
-      </form>
-    </div>
-  </section>
+  </div>
 
-  <section class="kh-section" id="resultats">
-    <div class="kh-wrap">
-      <h2>Biens à proximité</h2>
-      <div class="kh-slider">
-        <button class="kh-arrow kh-arrow--prev" id="prev" type="button" aria-label="Biens précédents">‹</button>
-        <button class="kh-arrow kh-arrow--next" id="next" type="button" aria-label="Biens suivants">›</button>
-        <div class="kh-track" id="track">
-          <a class="kh-card" href="#fiche">
-            <div class="kh-card__media kh-media-1" role="img" aria-label="Visuel : appartement lumineux"><span class="kh-badge kh-badge--new" style="position:absolute;top:12px;left:12px">Nouveau</span></div>
-            <div class="kh-card__body"><span class="kh-price">385 000 €</span><p class="kh-card__title">Appartement lumineux avec balcon</p><div class="kh-card__meta"><span>68 m²</span><span>3 pièces</span><span>Bordeaux Chartrons</span></div></div>
-          </a>
-          <a class="kh-card" href="#fiche">
-            <div class="kh-card__media kh-media-2" role="img" aria-label="Visuel : maison de ville"><span class="kh-badge kh-badge--pending" style="position:absolute;top:12px;left:12px">Sous compromis</span></div>
-            <div class="kh-card__body"><span class="kh-price">512 000 €</span><p class="kh-card__title">Maison de ville avec jardin</p><div class="kh-card__meta"><span>110 m²</span><span>5 pièces</span><span>Mérignac</span></div></div>
-          </a>
-          <a class="kh-card" href="#fiche">
-            <div class="kh-card__media kh-media-3" role="img" aria-label="Visuel : studio"><span class="kh-badge kh-badge--rented" style="position:absolute;top:12px;left:12px">Loué</span></div>
-            <div class="kh-card__body"><span class="kh-price">1 150 € <span class="kh-price__unit">/ mois</span></span><p class="kh-card__title">Studio meublé proche tramway</p><div class="kh-card__meta"><span>28 m²</span><span>1 pièce</span><span>Talence</span></div></div>
-          </a>
-          <a class="kh-card" href="#fiche">
-            <div class="kh-card__media kh-media-4" role="img" aria-label="Visuel : maison avec terrain"></div>
-            <div class="kh-card__body"><span class="kh-price">445 000 €</span><p class="kh-card__title">Maison avec terrain arboré</p><div class="kh-card__meta"><span>95 m²</span><span>4 pièces</span><span>Pessac</span></div></div>
-          </a>
-          <a class="kh-card" href="#fiche">
-            <div class="kh-card__media kh-media-5" role="img" aria-label="Visuel : loft"></div>
-            <div class="kh-card__body"><span class="kh-price">298 000 €</span><p class="kh-card__title">Loft lumineux en centre-ville</p><div class="kh-card__meta"><span>52 m²</span><span>2 pièces</span><span>Bordeaux Saint-Michel</span></div></div>
-          </a>
-          <a class="kh-card" href="#fiche">
-            <div class="kh-card__media kh-media-6" role="img" aria-label="Visuel : villa"></div>
-            <div class="kh-card__body"><span class="kh-price">720 000 €</span><p class="kh-card__title">Villa avec piscine</p><div class="kh-card__meta"><span>140 m²</span><span>5 pièces</span><span>Arcachon</span></div></div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <h2>Chiffres clés</h2>
+  <p class="hint">Données fictives.</p>
+  <div class="kh-stats">
+    <div class="kh-stats__intro"><p style="margin:0;font-size:20px;font-weight:700">Un bien vendu toutes les 4 heures</p></div>
+    <div class="kh-stat"><div class="kh-stat__num">2 480</div><div class="kh-stat__label">Annonces actives</div></div>
+    <div class="kh-stat"><div class="kh-stat__num">38 j</div><div class="kh-stat__label">Délai moyen de vente</div></div>
+    <div class="kh-stat"><div class="kh-stat__num">4,8</div><div class="kh-stat__label">Note des conseillers</div></div>
+  </div>
 
-  <section class="kh-section" id="fiche" style="padding-top:0">
-    <div class="kh-wrap">
-      <h2>Fiche bien</h2>
-      <div class="kh-detail">
-        <div>
-          <div class="kh-gallery kh-gallery--photo" role="img" aria-label="Visuel principal : maison de ville"></div>
-          <div class="kh-gallery-thumbs" aria-hidden="true"><div class="kh-thumb kh-thumb--1"></div><div class="kh-thumb kh-thumb--2"></div><div class="kh-thumb kh-thumb--3"></div><div class="kh-thumb kh-thumb--4"></div></div>
-          <div class="kh-facts">
-            <div class="kh-fact"><div class="kh-fact__value">68 m²</div><div class="kh-fact__label">Surface habitable</div></div>
-            <div class="kh-fact"><div class="kh-fact__value">3</div><div class="kh-fact__label">Pièces</div></div>
-            <div class="kh-fact"><div class="kh-fact__value">2e étage</div><div class="kh-fact__label">Avec ascenseur</div></div>
-          </div>
-          <p style="color:var(--color-text-muted)">Texte de démonstration. Appartement traversant, orienté sud, avec balcon et cave.</p>
-        </div>
-        <aside class="kh-contact" aria-label="Contacter le conseiller">
-          <span class="kh-price kh-price--lg">385 000 €</span>
-          <span class="kh-badge kh-badge--available" style="align-self:flex-start">● Disponible</span>
-          <button class="kh-btn kh-btn--primary kh-btn--block" type="button">Demander une visite</button>
-          <button class="kh-btn kh-btn--secondary kh-btn--block" type="button">Envoyer un message</button>
-          <p class="kh-contact__note">Conseiller joignable du lundi au samedi. Données de démonstration.</p>
-        </aside>
-      </div>
-    </div>
-  </section>
+  <h2>État vide et chargement</h2>
+  <div class="card">
+    <div class="spec"><div class="label">État vide</div><div class="kh-empty" style="width:100%">Aucune annonce ne correspond à ces critères. Élargissez la zone de recherche.</div></div>
+    <div class="spec"><div class="label">Chargement</div><div class="block"><div class="kh-skeleton"></div><div class="kh-skeleton" style="width:140px"></div></div></div>
+  </div>
 
-  <section class="kh-section" style="padding-top:0">
-    <div class="kh-wrap">
-      <h2>État vide</h2>
-      <div class="kh-empty">Aucune annonce ne correspond à ces critères. Élargissez la zone ou le budget pour voir plus de biens.</div>
-    </div>
-  </section>
-
-  <section class="kh-section" style="padding-top:0">
-    <div class="kh-wrap kh-stats">
-      <div class="kh-stats__intro"><h2 style="color:#fff;margin:0">Des conseillers présents sur le terrain</h2><p style="color:#DCE3FF">Données de démonstration.</p></div>
-      <div class="kh-stat"><span class="kh-stat__num">1 200+</span><span class="kh-stat__label">Biens publiés</span></div>
-      <div class="kh-stat"><span class="kh-stat__num">850+</span><span class="kh-stat__label">Clients accompagnés</span></div>
-      <div class="kh-stat"><span class="kh-stat__num">40+</span><span class="kh-stat__label">Conseillers</span></div>
-      <div class="kh-stat"><span class="kh-stat__num">4,8/5</span><span class="kh-stat__label">Avis clients</span></div>
-    </div>
-  </section>
+  <h2>Contrastes</h2>
+  <p class="hint">Texte normal : 4,5 : 1 minimum (WCAG AA).</p>
+  <div class="card">
+    <div class="spec"><div class="label">Texte sur fond</div><div><span style="padding:6px 12px;border-radius:6px;background:#F7F8F6;color:#1A2332;font-weight:500">#1A2332 sur #F7F8F6</span></div></div>
+    <div class="spec"><div class="label">Blanc sur primaire</div><div><span style="padding:6px 12px;border-radius:999px;background:#2446E0;color:#fff;font-weight:600">#FFFFFF sur #2446E0</span></div></div>
+    <div class="spec"><div class="label">Texte secondaire</div><div><span style="padding:6px 12px;border-radius:6px;background:#FFFFFF;color:#5B6674;border:1px solid #E2E6EA">#5B6674 sur #FFFFFF</span></div></div>
+  </div>
 </main>
-
-<footer class="kh-footer"><div class="kh-wrap">Keyhome · Design system · Données fictives · Typographie DM Sans (SIL OFL)</div></footer>
-
-<script>
-(function () {
-  var track = document.getElementById('track');
-  function step() { var c = track.firstElementChild; return c ? c.getBoundingClientRect().width + 24 : 300; }
-  document.getElementById('prev').addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
-  document.getElementById('next').addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
-})();
-</script>
 </body>
 </html>
