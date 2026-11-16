@@ -1,2 +1,7 @@
 [build]
-  publish = "maquette"
+  publish = "."
+
+[[redirects]]
+  from = "/"
+  to = "/demo/index.html"
+  status = 200
